@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title></title>
+    <link>https://example.com</link>
+    <description>
+      meta description
+    </description>
+    
+        
+            <item>
+                <title>jekyll SEO Template Tutorial</title>
+                <link>https://example.com/jekyll-seo-template-readme</link>
+                <content:encoded>
+                    <![CDATA[
+                    <p><img class="center-image post-main-image" alt="Jekyll SEO tutorial represented by tools" src="/assets/jekyll-seo-tutorial-0738ad4a53583d6da19448ab9205c249fc64ebac21e9d5cab8ea74f876a9f825.jpg" /></p>
+
+<p>Thanks for your interest in jekyll SEO template. In this post, I will cover things which differ this template from standard jekyll templates and describe SEO techniques which I implemented into it.</p>
+
+<p>To learn how use jekyll you should check out <a href="https://jekyllrb.com/" target="_blank">the documentation</a>.</p>
+
+<h2 id="configure-post-metadata">Configure post metadata:</h2>
+
+<p>Each post should have the following data set:</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">layout: post
+title:
+head_title:
+date:
+summary:
+last_modified_at:
+preview_image:
+keywords:
+prev_amp:
+  url:
+  title:
+next_amp:
+  url:
+  title:</code></pre></figure>
+
+<p>I added the following non-standard data fields to this template:</p>
+
+<p><code class="highlighter-rouge">head_title</code> - it will be displayed in a <code class="highlighter-rouge">&lt;title&gt;</code> tag of a blog page. This is a title that users will see when they find your page in Google search results. It can be different than the <code class="highlighter-rouge">title</code>, it is a great place to input the keywords you are targeting.</p>
+
+<p><code class="highlighter-rouge">prev_amp</code> <code class="highlighter-rouge">next_amp</code> (optional) - these variables can be defined to enable next and previous post navigation in an Accelerated Mobile Page version of a post. You need to provide a display title and URL of neighboring posts.</p>
+
+<p><code class="highlighter-rouge">preview_image</code> - this image will be displayed as a thumbnail of a post Open Graph and Twitter meta tags. The image is preprocessed using <a href="https://github.com/envygeeks/jekyll-assets" target="_blank">jekyll-assets gem</a>. One caveat is that if you don’t use preview image anywhere in the post it’s preprocessed version will not be prepared. To avoid this problem you need to display hidden version of an image somewhere on your blog. Check out <code class="highlighter-rouge">pages/thanks.html</code> to see how I do it for <code class="highlighter-rouge">publisher.jpg</code> and <code class="highlighter-rouge">author.jpg</code>.</p>
+
+<p>It will not be an issue if you use a preview image somewhere in your post.</p>
+
+<p>Preview image needs to be exactly <code class="highlighter-rouge">800x500px</code> because dimensions data has to be provided in both Open Graph tags and Structured Data. You can change it if you like but I find this size optimal for my images.</p>
+
+<p><code class="highlighter-rouge">keywords</code> - keywords are said to have SEO minimal impact in the meta tag. I use them also for Structured Data so it won’t hurt to add them.</p>
+
+<p>This template contains 3 of my real blog posts, please consult their source files if something is unclear.</p>
+
+<h2 id="lower-head">Lower head</h2>
+
+<p>I improved the rendering speed by moving fetching blocking resources below the <code class="highlighter-rouge">&lt;body&gt;</code> tag. You can check out <code class="highlighter-rouge">_includes/lower_head.html</code>.</p>
+
+<h2 id="image-preprocessing">Image preprocessing</h2>
+
+<p>Image preprocessing adds a digest tag to each image. It allows you to leverage browser caching and improve page speed ranking. Check out  <a href="https://github.com/envygeeks/jekyll-assets" target="_blank">jekyll-assets gem</a> for documentation on how to use it.</p>
+
+<h2 id="permalink">Permalink</h2>
+
+<p>Contrary to default jekyll setting, posts use only their filename title as an URL. There are studies which confirm that Google favors shorter URLs.</p>
+
+<h2 id="accelerated-mobile-pages">Accelerated Mobile Pages</h2>
+
+<ul>
+  <li>Each blog post has an AMP version, available under <code class="highlighter-rouge">amp/NORMAL_URL</code> address</li>
+  <li>Checkout an AMP version of this blog post here: <a href="/amp/jekyll-seo-template-readme" target="_blank">/amp/jekyll-seo-template-readme</a></li>
+  <li>Styling for AMP pages is in <code class="highlighter-rouge">_includes/amp_styles.css</code> file</li>
+  <li>AMP pages are not added to the sitemap because it is not necessary, Googlebot finds them via <code class="highlighter-rouge">amphtml</code> link tag</li>
+  <li>Each AMP page has a footer defined in <code class="highlighter-rouge">_includes/amp_post_footer.html</code> file</li>
+  <li>Each AMP page has a backlink to the original version of the post.</li>
+  <li>AMP pages are generated using <a href="https://github.com/juusaw/amp-jekyll" target="_blank">amp-jekyll</a>, you can consult its readme for more info</li>
+</ul>
+
+<h2 id="structured-data">Structured Data</h2>
+
+<p>Together with Accelerated Mobile Pages Structured Data allows your website to appear in Google’s featured snippets and Chrome’s recommended articles.</p>
+
+<p>You can check out <code class="highlighter-rouge">_includes/schema.html</code> to see how I setup structured data.</p>
+
+<p>To generate a correct <code class="highlighter-rouge">BlogPosting</code> entry you need to provide a publisher image with size exactly <code class="highlighter-rouge">600x60</code>. <code class="highlighter-rouge">publisher.jpg</code> image is in the <code class="highlighter-rouge">_assets/shared</code> folder. You should change it to represent your brand.</p>
+
+<h2 id="styling">Styling</h2>
+
+<p>You can find my custom CSS in <code class="highlighter-rouge">css/styles.scss</code> file. You can change <code class="highlighter-rouge">$theme-color</code> variable to change the main color.</p>
+
+<p>Styling for AMP pages does not support SASS because it has to be inlined.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>You can also consult <a href="https://pawelurbanek.com/2018/02/16/seo-tips-for-technical-bloggers-and-programming-blogs-in-2018/" target="_blank">my blog post about SEO tips for blogs</a> where I describe some of those techniques.</p>
+
+<p>Once again thanks for your interest in the template. I am open to suggestions on what could be improved in the codes of the template and this tutorial.</p>
+
+                    ]]>
+                </content:encoded>
+                <guid isPermaLink="false">/jekyll-seo-template-readme</guid>
+                <description>
+                    
+                    Thanks for your interest in jekyll SEO template. In this post, I will cover things which differ this template from standard jekyll templates and describe SEO techniques which I implemented into it.
+                    
+                </description>
+                <pubDate>Fri, 23 Feb 2018 09:00:00 +0000</pubDate>
+                <author>blog author</author>
+            </item>
+        
+    
+        
+            <item>
+                <title>Multiple Domains with Free Wildcard SSL from Cloudflare</title>
+                <link>https://example.com/setup-multiple-domains-with-free-ssl-from-cloudflare</link>
+                <content:encoded>
+                    <![CDATA[
+                    <p><img class="center-image post-main-image" alt="Multiple http domains can be cheap" src="/assets/signs-bfb1f5fc4b30c1d171fa529dd9a39097eeaf23a1e1ade991de7f9089abba4cb4.jpg" /></p>
+
+<p>Domain names you own could be your most expensive to do list. What’s more a domain without a valid SSL will show up in all modern browsers as an insecure content. In this blog post, I will explain how to minimize the cost of owning multiple wildcard SSL-protected domains using Cloudflare and set them up with Github Pages, Heroku or NGINX.</p>
+
+<p>After I did not renew yet another domain for one of my <em>not-so-profitable-yet</em> side projects I decided to change a strategy. Now I am hosting most of my projects on subdomains of one root domain: <a href="https://apki.io" target="_blank">apki.io</a>. I’ve used it for a couple of projects so far:</p>
+
+<p><a href="https://abot.apki.io" target="_blank">https://abot.apki.io</a></p>
+
+<p><a href="https://wishlist.apki.io" target="_blank">https://wishlist.apki.io</a></p>
+
+<p><a href="https://selfcontrol.apki.io" target="_blank">https://selfcontrol.apki.io</a></p>
+
+<p><a href="https://focus.apki.io/" target="_blank">https://focus.apki.io</a></p>
+
+<p><a href="https://tracky.apki.io/" target="_blank">https://tracky.apki.io</a></p>
+
+<p>My only cost is the yearly renewal of the root domain. Each of these sites has a grade A SSL which works in all the browsers. Here’s how you can do it:</p>
+
+<h2 id="buy-a-root-domain">Buy a “root” domain</h2>
+
+<p>I usually use <a href="https://www.gandi.net/" target="_blank">Gandi</a> but it does not really matter which provider you choose. There are plenty of tutorials explaining how to buy a domain so I will not elaborate on that.</p>
+
+<h2 id="setup-cloudflare-and-free-ssl-certificate">Setup Cloudflare and free SSL certificate</h2>
+
+<p><a href="https://www.cloudflare.com/" target="_blank">Cloudflare</a> is a great service providing tons of features ranging from DDOS protection to smart caching and more. We will focus on how to use it to configure free SSL.</p>
+
+<p>First, you need to move your domain’s nameservers to Cloudflare. After adding a domain to your Cloudflare panel you will be able to check if new config has already propagated. Keep in mind that it can take up to 24 hours.</p>
+
+<p>Next, you need to issue a Cloudflare SSL certificate for your domain. They provide a free wildcard certificate. You can do it in a <code class="highlighter-rouge">Crypto</code> tab bar:</p>
+
+<p><img class="center-image" alt="Cloudflare free wildcard SSL was issued" src="/assets/cloudflare_ssl-40256cd99a4efcb0ffe9677df08a69fb159cc2e2507c5029dbd3a703ebb77277.png" /></p>
+
+<p><span class="annotation">In case that after 24 hours they are still “Authorizing Certificate” you should contact support.</span></p>
+
+<h2 id="setup-github-pages">Setup Github Pages</h2>
+
+<p><a href="https://pages.github.com/" target="_blank">Github Pages</a> is a popular solution for hosting static pages. This blog itself is placed there and powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>. It is free as long as you are using a public GitHub repo. Out of the box, it provides an <code class="highlighter-rouge">https://[Your username].github.io</code> domain for you, however with a minimal configuration you can setup your own domain for free.</p>
+
+<p>First, you need to change your DNS config to point to GitHub’s IP (<code class="highlighter-rouge">192.30.252.154</code>) using an A record. You can do it in Cloudflare DNS settings:</p>
+
+<p><img class="center-image" alt="DNS A config in Cloudflare panel" src="/assets/dns_a_config-25e0e85cda78fc35a3e0b2fd081b6c92f922c9c4773b0d8de18dd41d38de18b0.png" /></p>
+
+<p>then in your project settings on GitHub, you should add a custom domain name:</p>
+
+<p><img class="center-image" alt="GitHub settings, setup custom domain with no cost SSL" src="/assets/github_settings-a5d06af41dcea16bb5d38de48180ff7d164f3ade32aad1582dfcc74beccaee89.png" /></p>
+
+<p>That’s it, your website should be up running.</p>
+
+<h2 id="setup-heroku">Setup Heroku</h2>
+
+<p>If you need something more complex than a static page then <a href="https://heroku.com/" target="_blank">Heroku</a> could be a thing for you. By default, it offers an <code class="highlighter-rouge">https://[Your app name].herokuapp.com</code> domain. Same as with GitHub pages you can hook your own domain with SSL without any additional costs.</p>
+
+<p>Start with adding your domain name in Heroku’s app settings:</p>
+
+<p><img class="center-image" alt="Heroku settings, setup custom domain with free SSL" src="/assets/heroku_domain-8bc1696ee1bb65057ba42134a0aeb1d6db380438c4b535a586f9de3b9b55fb6e.png" />
+<span class="annotation">Don’t worry about those error messages, it works anyway</span></p>
+
+<p>Then add a CNAME record pointing your subdomain to default Heroku URL in your Cloudflare DNS dashboard:</p>
+
+<p><img class="center-image" alt="Cloudflare CNAME DNS setting" src="/assets/dns_cname-b7b3a6920efccabd626557a3d4fa897c1c696bb4dbb773950fbc1e542156a2f8.png" />
+<span class="annotation">Add a CNAME record pointing subdomain to https://[Your app name].herokuapp.com</span></p>
+
+<p>Your Heroku app should now be available on your custom domain with full SSL support.</p>
+
+<h2 id="setup-nginx">Setup NGINX</h2>
+
+<p>If you are using a custom hosting infrastructure then <a href="https://nginx.org/en/" target="_blank">NGINX</a> could be your front-end server. In this case you can still hook free SSL with a custom domain.</p>
+
+<p>Start with pointing your domain to your server’s IP using an A DNS record. Next, check out two detailed articles on Cloudflare support explaining how to complete the setup:</p>
+
+<p><a href="https://support.cloudflare.com/hc/en-us/articles/115000479507" target="_blank">Creating and managing certificates with Origin CA</a></p>
+
+<p><a href="https://support.cloudflare.com/hc/en-us/articles/217471977" target="_blank">How to install an Origin CA certificate in NGINX</a></p>
+
+<h2 id="final-remarks">Final remarks</h2>
+
+<p>Keep in mind that when working with DNS and SSL configuration you probably will run into some caching related issues. I usually use <a href="https://www.whatsmydns.net/" target="_blank">DNS Propagation Checker</a> to see if changes have already been applied. Still, some of the settings could be cached locally on your computer. On macOS running these commands could help:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>killall <span class="nt">-HUP</span> mDNSResponder
+<span class="nb">sudo </span>killall mDNSResponderHelper
+<span class="nb">sudo </span>dscacheutil <span class="nt">-flushcache</span></code></pre></figure>
+
+<p>If not then you could check if it works on different browsers or your mobile device. Rule of the thumb, if it should work but it still doesn’t I just leave it for a couple of hours and then check again ¯\<em>(ツ)</em>/¯.</p>
+
+<p>There’s also <a href="https://letsencrypt.org/" target="_blank">Let’s Encrypt</a> you can use to setup free SSL. So far Cloudflare has always been good enough for what I needed.</p>
+
+<p>Obviously, you can use all of those tips for top-level domains as well. Hope it helps you shave a few bucks off what you spend on your online projects.</p>
+
+<p><strong>Disclaimer:</strong> I’m not a web security expert. I would not recommend using these tips for a project with bank-level security requirements. Let me know in the comments if you notice some security loopholes in those settings.</p>
+
+
+                    ]]>
+                </content:encoded>
+                <guid isPermaLink="false">/setup-multiple-domains-with-free-ssl-from-cloudflare</guid>
+                <description>
+                    
+                    Domain names you own could be your most expensive to do list. What’s more a domain without a valid SSL will show up in all modern browsers as an insecure content. In this blog post, I will explain how to minimize the cost of owning multiple wildcard SSL-protected domains using Cloudflare and set them up with Github Pages, Heroku or NGINX.
+                    
+                </description>
+                <pubDate>Mon, 22 Jan 2018 09:00:00 +0000</pubDate>
+                <author>blog author</author>
+            </item>
+        
+    
+        
+            <item>
+                <title>Reduce Rails Memory Usage, Fix R14 and Save Money on Heroku</title>
+                <link>https://example.com/limit-rails-memory-usage-fix-R14-and-save-money-on-heroku</link>
+                <content:encoded>
+                    <![CDATA[
+                    <p><img class="center-image post-main-image" alt="Reduce costs on Heroku, represented by a pig image" src="/assets/pig-represents-saving-money-on-heroku-2d7543382abaf45f25c54acb474d389536034d92a759e0317178e6d1f3ac2f15.jpg" /></p>
+
+<p>In theory, you can run both Rails web server and Sidekiq process on one 512mb Heroku dyno. For side projects with small traffic, saving $7/month always comes in handy. Unfortunately when trying to fit two Ruby processes on one dyno you can run into memory issues. In this post, I will explain how you can reduce memory usage in Rails apps.</p>
+
+<p>Recently, I read a <a href="https://bilalbudhani.com/running-sidekiq-on-heroku-free-dyno/" target="_blank">great article</a> by Bilal Budhani explaining how to run Sidekiq process alongside Puma on one Heroku dyno. After applying it to <a href="https://wishlist.apki.io" target="_blank">one of my side projects</a>, I started running into those dreaded R14 errors.</p>
+
+<p><img class="center-image" alt="Heroku R14 - Memory Quota Exceeded in Ruby errors" src="/assets/R14_error-26587125dc2d34675e70602c79431a4e9f415953276fdeff86bfcf88bb1c3c36.png" /></p>
+
+<p><span class="annotation">Memory usage spiked followed by a bunch of memory errors and automatic restart</span></p>
+
+<p>I did some digging and, after a couple of optimizations memory usage charts started looking like this:</p>
+
+<p><img class="center-image" alt="Heroku R14 - Memory Quota Exceeded in Ruby fixed" src="/assets/R14_fixed-2f03942be78002ee38a8e10aa0ce798d8e4d0dd883b3c41ac23084ce5dbd37b2.png" /></p>
+
+<p><span class="annotation">Stable memory usage followed by garbage collection</span></p>
+
+<p>Here’s what I did:</p>
+
+<h2 id="put-your-gemfile-on-a-diet">Put your Gemfile on a diet</h2>
+
+<p><em>There is a Gem for that…</em> In the Ruby world, dropping in a Gem to solve a problem is usually the <em>“easiest”</em> solution. Apart from other costs, memory bloat is one that can easily get overlooked.</p>
+
+<p>The best way to check how much memory each of your gems consumes is to use <a href="https://github.com/schneems/derailed_benchmarks" target="_blank">derailed benchmarks</a>. Just add:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s1">'derailed_benchmarks'</span><span class="p">,</span> <span class="ss">group: :development</span></code></pre></figure>
+
+<p>to your <code class="highlighter-rouge">Gemfile</code> and run <code class="highlighter-rouge">bundle exec derailed bundle:mem</code>.</p>
+
+<p>My project powers <a href="https://twitter.com/apps_wishlist" target="_blank">Twitter</a> and <a href="https://www.facebook.com/SmartWishlistiOS/" target="_blank">Facebook</a> bot profiles. I was surprised to find out that a popular <a href="https://github.com/sferik/twitter" class="link" target="_blank">twitter</a> gem uses over <code class="highlighter-rouge">13 MB</code> of memory on startup. First I replaced it with its lightweight alternative <a href="https://github.com/hayesdavis/grackle" target="_blank">grackle</a> (<code class="highlighter-rouge">~1 MB</code>) and finally ended up writing a custom code making a HTTP call to Twitter API. I also managed to get rid of <a href="https://github.com/arsduo/koala" target="_blank">koala</a> gem (<code class="highlighter-rouge">~2 MB</code>) in the same way.</p>
+
+<p>Another quick win was replacing <a href="https://github.com/gazay/gon" target="_blank">gon</a> gem (<code class="highlighter-rouge">~6 MB</code>) with custom JavaScript data attributes.</p>
+
+<p>Importing a couple of MBs worth of gem files to simplify making one HTTP call or preventing writing a couple of JavaScript lines should definitely be avoided.</p>
+
+<h2 id="use-jemalloc-to-reduce-rails-memory-usage">Use jemalloc to reduce Rails memory usage</h2>
+
+<p><a href="http://jemalloc.net/">jemalloc</a> is an alternative to official MRI memory allocator. On Heroku, you can add jemalloc using a <a href="https://github.com/gaffneyc/heroku-buildpack-jemalloc" class="link" target="_blank">buildpack</a>. For my app, it resulted in ~20% memory usage decrease. Just make sure to test your app with jemalloc thoroughly on a staging environment before deploying it to production.</p>
+
+<h2 id="limit-concurrency-and-workers">Limit concurrency and workers</h2>
+
+<p>For a side project with limited traffic you probably don’t need a lot of throughput anyway. You can limit memory usage by reducing Sidekiq and Puma workers and threads count. Here’s my <code class="highlighter-rouge">config/puma.rb</code> file:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">threads_count</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">threads</span> <span class="n">threads_count</span><span class="p">,</span> <span class="n">threads_count</span>
+<span class="n">port</span>        <span class="no">ENV</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"PORT"</span><span class="p">)</span> <span class="p">{</span> <span class="mi">3000</span> <span class="p">}</span>
+<span class="n">environment</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"RAILS_ENV"</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"production"</span> <span class="p">}</span>
+<span class="n">workers</span> <span class="mi">1</span>
+
+<span class="n">preload_app!</span>
+
+<span class="n">on_worker_boot</span> <span class="k">do</span>
+  <span class="vi">@sidekiq_pid</span> <span class="o">||=</span> <span class="n">spawn</span><span class="p">(</span><span class="s1">'bundle exec sidekiq -t 1'</span><span class="p">)</span>
+  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">establish_connection</span> <span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="no">ActiveRecord</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">on_restart</span> <span class="k">do</span>
+  <span class="no">Sidekiq</span><span class="p">.</span><span class="nf">redis</span><span class="p">.</span><span class="nf">shutdown</span> <span class="p">{</span> <span class="o">|</span><span class="n">conn</span><span class="o">|</span> <span class="n">conn</span><span class="p">.</span><span class="nf">close</span> <span class="p">}</span>
+<span class="k">end</span>
+
+<span class="n">plugin</span> <span class="ss">:tmp_restart</span></code></pre></figure>
+
+<p>and <code class="highlighter-rouge">config/sidekiq.yml</code>:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="s">:concurrency</span><span class="pi">:</span> <span class="s">1</span>
+<span class="s">:queues</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">default</span>
+  <span class="pi">-</span> <span class="pi">[</span><span class="nv">critical</span><span class="pi">,</span> <span class="nv">100</span><span class="pi">]</span></code></pre></figure>
+
+<p>Although we specify 1 as the max number of threads, Puma can <a href="https://github.com/puma/puma#thread-pool" target="_blank">spawn up to 7 threads</a>. With those minimal settings, <a href="http://wishlist.apki.io/" target="_blank">Smart Wishlist</a> is still able to process around 100k Sidekiq jobs daily and serve both React frontend and mobile JSON API.</p>
+
+<h2 id="optimize-json-parsing">Optimize JSON parsing</h2>
+
+<p>All those Sidekiq jobs are necessary to download up to date prices from iTunes API (requests batching is on my TODO list) and send push notifications about discounts. This means there’s quite a lot of JSON parsing going on there. There is an oneline fix which can help optimize both memory usage and performance in such cases:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s1">'yajl-ruby'</span><span class="p">,</span> <span class="ss">require: </span><span class="s1">'yajl/json_gem'</span></code></pre></figure>
+
+<p><a href="https://github.com/brianmario/yajl-ruby" target="_blank">yaji-ruby</a> offers a JSON gem Compatibility API, which hooks into <code class="highlighter-rouge">JSON.parse</code> calls, improving their performance and memory usage.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Working in constrained environments is a great way to flex your programming muscles and discover new optimization techniques. In theory, you could always solve memory issues by throwing more money at your servers, but why not keep those $7 instead?</p>
+
+<p>Check out my other blog post for more tips on how to <a href="https://example.com/2018/02/05/optimize-rails-performance-bottleneck-with-caching-and-rack-middleware/">improve performance and reduce memory usage of Rails apps</a>.</p>
+
+
+                    ]]>
+                </content:encoded>
+                <guid isPermaLink="false">/limit-rails-memory-usage-fix-R14-and-save-money-on-heroku</guid>
+                <description>
+                    
+                    In theory, you can run both Rails web server and Sidekiq process on one 512mb Heroku dyno. For side projects with small traffic, saving $7/month always comes in handy. Unfortunately when trying to fit two Ruby processes on one dyno you can run into memory issues. In this post, I will explain how you can limit memory usage in Rails apps.
+                    
+                </description>
+                <pubDate>Mon, 15 Jan 2018 09:00:25 +0000</pubDate>
+                <author>blog author</author>
+            </item>
+        
+    
+        
+            <item>
+                <title>Productive Laziness - Optimize your Shell Workflow</title>
+                <link>https://example.com/productive-laziness-optimize-your-shell-workflow</link>
+                <content:encoded>
+                    <![CDATA[
+                    <p><img class="center-image post-main-image" alt="Lazy sleeping cat" src="/assets/lazy-cat-961c27ad84e61e63fe0e643e5394860714b4acea60c9a5ba1791d8704d9660ea.jpg" /></p>
+
+<p>I would like to share a simple productivity tip that probably helped me save thousands of keystrokes so far.</p>
+
+<p>I’ve been using this technique for a while now to maximize my laziness (<em>productivity</em>) during work and so, recently I wrapped it up in an easy to use <a href="https://github.com/pawurb/lazyme" class="link" target="_blank">Ruby Gem</a>. It simply counts your shell commands and displays them sorted by usage frequency. Using it is as simple as typing:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gem <span class="nb">install </span>lazyme
+lazyme</code></pre></figure>
+
+<p>This is how my most used commands look now. Top hits are usually a good candidate for new aliases:</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">+---------------------------------------------+-------+
+|                     Lazyme                          |
++---------------------------------------------+-------+
+|...                                          | ...   |
+| ei                                          | 21    |
+| gpstg                                       | 22    |
+| gstp                                        | 23    |
+| zs                                          | 28    |
+| s .                                         | 30    |
+| zrr                                         | 32    |
+| gpshh                                       | 60    |
+| rss                                         | 70    |
+| c                                           | 75    |
+| gd                                          | 107   |
+| o .                                         | 123   |
+| gst                                         | 130   |
+| ls                                          | 179   |
+| gl                                          | 310   |
+| gp                                          | 445   |
+| gds                                         | 540   |
+| gaa                                         | 817   |
+| g                                           | 3365  |
++---------------------------------------------+-------+
+| Command                                     | Count |
++---------------------------------------------+-------+</code></pre></figure>
+
+<p>With almost all top commands being aliases, I am now sure I work as lazily as possible.</p>
+
+<p>I know that some developers don’t like using aliases because they worry that they might keep forgetting them. To fix this problem, I have a special alias <code class="highlighter-rouge">aliases</code> which displays a list of all my aliases (btw <code class="highlighter-rouge">gr</code> is an alias for <code class="highlighter-rouge">grep</code>).</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">aliases | gr aliases
+<span class="o">=&gt;</span> <span class="nb">alias</span> <span class="s1">'aliases'</span><span class="o">=</span><span class="s1">'cat ~/.dotfiles/settings/shell/aliases.sh'</span></code></pre></figure>
+
+<p>Some say that if you get used to using aliases too much you might have a problem with working efficiently on remote servers which lack your custom config settings. I solved this problem with a couple of aliases which upload a list of my most essential aliases to remote servers (<code class="highlighter-rouge">ubash</code>, <code class="highlighter-rouge">uvim</code> and <code class="highlighter-rouge">ugit</code>). Just be careful not to overwrite some important settings if you don’t own the server. Whether you want to sacrifice your productivity when working locally, to avoid some possible problems when working on remote server is entirely up to you.</p>
+
+<p>You can set aliases and helper functions by adding following lines into your <code class="highlighter-rouge">.bashrc</code> or <code class="highlighter-rouge">.zshrc</code> files:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">alias </span><span class="nv">gr</span><span class="o">=</span><span class="s1">'grep — color'</span>
+<span class="nb">alias </span><span class="nv">g</span><span class="o">=</span><span class="s1">'git status'</span>
+<span class="nb">alias </span><span class="nv">gaa</span><span class="o">=</span><span class="s1">'git add . -A'</span>
+
+<span class="k">function </span>gm<span class="o">()</span> <span class="o">{</span>
+  git commit <span class="nt">-m</span> <span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>I, therefore, encourage you to show your fingers some love and treat them to a couple of nice aliases.</p>
+
+                    ]]>
+                </content:encoded>
+                <guid isPermaLink="false">/productive-laziness-optimize-your-shell-workflow</guid>
+                <description>
+                    
+                    I would like to share a simple productivity tip that probably helped me save thousands of keystrokes so far. I’ve been using this technique for a while now to maximize my laziness (productivity) during work and so, recently I wrapped it up in an easy to use Ruby Gem.
+                    
+                </description>
+                <pubDate>Mon, 08 Jan 2018 15:26:52 +0000</pubDate>
+                <author>blog author</author>
+            </item>
+        
+    
+  </channel>
+</rss>
