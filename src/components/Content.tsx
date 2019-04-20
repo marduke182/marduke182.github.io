@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import { media } from '../utils/media';
 
 export const Content = styled.div`
-  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
-  border-radius: 1rem;
-  padding: 0.5rem 4rem;
-  background-color: ${props => props.theme.colors.bg};
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   z-index: 9000;
-  margin-top: -4rem;
+  flex: 1 1 40rem;
+  max-width: 40rem;
   form {
     p {
       label,
@@ -23,12 +22,5 @@ export const Content = styled.div`
         width: 100%;
       }
     }
-  }
-  @media ${media.tablet} {
-    padding: 0.5rem 3rem;
-  }
-  @media ${media.phone} {
-    padding: 0.2rem 1.5rem;
-    margin-top: -1rem;
   }
 `;

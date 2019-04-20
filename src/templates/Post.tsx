@@ -9,15 +9,12 @@ import '../utils/prismjs-theme.css';
 import PathContext from '../models/PathContext';
 import Post from '../models/Post';
 import { media } from '../utils/media';
+import { Date } from '../components/Date';
 
 const PostContent = styled.div`
-  margin-top: 2rem;
-  @media ${media.tablet} {
-    margin-top: 1.5rem;
-  }
-  @media ${media.phone} {
-    margin-top: 1.5rem;
-  }
+  margin-top: 1rem;
+  max-width: 40rem;
+  line-height: 1.8;
 `;
 
 interface Props {
@@ -40,8 +37,11 @@ export default class PostPage extends React.PureComponent<Props> {
             <Header banner={post.frontmatter.banner}>
               <Link to="/">{config.siteTitle}</Link>
               <SectionTitle>{post.frontmatter.title}</SectionTitle>
-              <Subline light={true}>
-                {post.frontmatter.date} &mdash; {post.timeToRead} Min Read &mdash; In{' '}
+              <Subline light={false}>
+                <Date date={post.frontmatter.date} />
+                <br />
+                {post.timeToRead} Min Read
+                <br /> 
                 <Link to={`/categories/${kebabCase(post.frontmatter.category)}`}>{post.frontmatter.category}</Link>
               </Subline>
             </Header>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import { Subline } from './Subline';
+import { Date } from './Date';
 
 const Post = styled.article`
   display: flex;
@@ -53,7 +54,7 @@ export class Article extends React.PureComponent<Props> {
           <Link to={`/blog/${slug}`}>{title}</Link>
         </Title>
         <Subline>
-          {date} &mdash; {timeToRead} Min Read &mdash; In
+        <Date date={date} /> &mdash; {timeToRead} Min Read &mdash; In
           <Link to={`/categories/${kebabCase(category)}`}> {category}</Link>
         </Subline>
         <Excerpt>{excerpt}</Excerpt>

@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: ${theme.colors.bg};
     color: ${theme.colors.grey.default};
+    font-family: ${theme.fontFamily.normal};
     @media ${media.phone} {
       font-size: 14px;
     }
@@ -24,7 +25,10 @@ const GlobalStyle = createGlobalStyle`
   }
   h1, h2, h3, h4 {
     color: ${theme.colors.grey.dark};
+    font-family: ${theme.fontFamily.heading};
+    font-weight: bold;
   }
+  
   blockquote {
     font-style: italic;
     position: relative;
@@ -83,8 +87,7 @@ export class Layout extends React.PureComponent<{}> {
               <GlobalStyle />
               {children}
               <Footer>
-                &copy; {split(data.site.buildTime, '.')[2]} by Majid Hajian. All rights reserved. <br />
-                <a href="https://github.com/mhadaily/gatsby-starter-typescirpt-power-blog">GitHub Repository</a> <br />
+                &copy; {split(data.site.buildTime, '.')[2]} by Jesús Quintana. <br />
                 <span>Last build: {data.site.buildTime}</span>
               </Footer>
             </React.Fragment>

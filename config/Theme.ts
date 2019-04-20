@@ -16,11 +16,17 @@ const transitions = {
 
 const fontSize = {
   small: '0.9rem',
-  big: '1.9rem',
+  big: '1.8rem',
+};
+
+const fontFamily = {
+  heading: '"Lato","Helvetica Neue",Helvetica,sans-serif',
+  normal: '"Merriweather","PT Serif",Georgia,"Times New Roman",serif',
 };
 
 export default {
   colors,
   transitions,
   fontSize,
+  fontFamily,
 };
