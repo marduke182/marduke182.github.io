@@ -12,8 +12,7 @@ import lighten from 'polished/lib/color/lighten';
 
 const Homepage = styled.main`
   display: flex;
-  height: 100vh;
-  flex-direction: row;
+  flex-direction: column;
   @media ${media.tablet} {
     height: 100%;
     flex-direction: column;
@@ -28,7 +27,7 @@ const GridRow: any = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: ${(props: { alignItems?: 'flex-start' }) => (props.alignItems ? props.alignItems : 'center')};
   background: ${(props: any) =>
     props.background
       ? `linear-gradient(
@@ -51,7 +50,7 @@ const GridRow: any = styled.div`
 `;
 
 const HomepageContent: any = styled.div`
-  max-width: 30rem;
+  max-width: 40rem;
   text-align: ${(props: any) => (props.center ? 'center' : 'left')};
 `;
 
@@ -64,14 +63,12 @@ export default class IndexPage extends React.Component<PageProps> {
         <Wrapper fullWidth={true}>
           <Helmet title={`Homepage | ${config.siteTitle}`} />
           <Homepage>
-            <GridRow background={true}>
+            <GridRow background={false} alignItems="flex-start">
               <HomepageContent center={true}>
-                <img src={config.siteLogo} />
                 <h1>
                   Hi. I am <br />
-                  Majid Hajian
+                  Jesús Quintana
                 </h1>
-                <p>I write about JavaScript, Angular, Ember, React, Vue, GlimmerJs, NodeJs, Rails, Go, Gatsby and ...</p>
                 <Link to="/contact">
                   <Button big={true}>
                     <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +96,7 @@ export default class IndexPage extends React.Component<PageProps> {
                   and passionate about JavaScript world.
                 </p>
                 <hr />
-                <h2>Latest Blog</h2>
+                <h2>Latest Posts</h2>
                 {edges.map(post => (
                   <Article
                     title={post.node.frontmatter.title}
@@ -124,13 +121,14 @@ export default class IndexPage extends React.Component<PageProps> {
 }
 export const IndexQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 5) {
       totalCount
       edges {
         node {
           fields {
             slug
           }
+          excerpt(pruneLength: 280)
           frontmatter {
             title
             date(formatString: "DD.MM.YYYY")

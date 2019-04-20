@@ -1,5 +1,5 @@
 const colors = {
-  primary: '#72cc96', // Color for buttons or links
+  primary: '#ff6200', // Color for buttons or links
   bg: '#fff', // Background color
   white: '#fff',
   grey: {
@@ -16,7 +16,7 @@ const transitions = {
 
 const fontSize = {
   small: '0.9rem',
-  big: '2.9rem',
+  big: '1.9rem',
 };
 
 export default {

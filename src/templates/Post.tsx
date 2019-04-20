@@ -8,9 +8,16 @@ import config from '../../config/SiteConfig';
 import '../utils/prismjs-theme.css';
 import PathContext from '../models/PathContext';
 import Post from '../models/Post';
+import { media } from '../utils/media';
 
 const PostContent = styled.div`
-  margin-top: 4rem;
+  margin-top: 2rem;
+  @media ${media.tablet} {
+    margin-top: 1.5rem;
+  }
+  @media ${media.phone} {
+    margin-top: 1.5rem;
+  }
 `;
 
 interface Props {

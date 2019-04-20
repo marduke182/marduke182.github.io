@@ -14,7 +14,7 @@ const HeaderWrapper: any = styled.header`
     ),
     url(${(props: any) => props.banner}) no-repeat;
   background-size: cover;
-  padding: 8rem 2rem 10rem;
+  padding: 3rem 2rem 5rem;
   text-align: center;
   ::after {
     background: transparent url(/assets/mask.svg) no-repeat bottom left;
@@ -23,12 +23,12 @@ const HeaderWrapper: any = styled.header`
     content: '';
     display: block;
     height: 100%;
-    left: 0;
+    right: 0;
     position: absolute;
-    width: 100%;
+    width: 50%;
   }
   @media ${media.tablet} {
-    padding: 4rem 2rem 6rem;
+    padding: 3rem 2rem 5rem;
   }
   @media ${media.phone} {
     padding: 1rem 0.5rem 2rem;
