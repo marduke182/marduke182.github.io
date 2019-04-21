@@ -26,14 +26,6 @@ module.exports = {
     'gatsby-plugin-lodash',
     'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        google: {
-          families: ['Lato:900,300', 'Merriweather:900,900italic,300,300italic']
-        }
-      }
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'post',

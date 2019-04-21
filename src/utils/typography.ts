@@ -7,11 +7,11 @@ const typography = new Typography({
   scaleRatio: 3.157,
   headerFontFamily: [config.headerFontFamily, 'sans-serif'],
   bodyFontFamily: [config.bodyFontFamily, 'sans-serif'],
-  headerWeight: 700,
+  headerWeight: 900,
   googleFonts: [
     {
       name: config.headerFontFamily,
-      styles: ['700'],
+      styles: ['900'],
     },
     {
       name: config.bodyFontFamily,

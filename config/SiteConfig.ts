@@ -23,8 +23,8 @@ export default {
   backgroundColor: '#2b2e3c',
 
   // Settings for typography.ts
-  headerFontFamily: 'Bitter',
-  bodyFontFamily: 'Open Sans',
+  headerFontFamily: 'Lato',
+  bodyFontFamily: 'Merriweather',
   baseFontSize: '18px',
 
   // Social media
