@@ -58,6 +58,9 @@ const GlobalStyle = createGlobalStyle`
   .textRight {
     text-align:right;
   }
+  .gatsby-highlight {
+    margin-bottom: 1rem;
+  }
 `;
 
 const Footer = styled.footer`
