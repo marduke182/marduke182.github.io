@@ -1,25 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 import config from '../../config/SiteConfig';
+import { Link } from 'gatsby';
+import { Theme } from '../../config/Theme';
+import { Nav } from './Nav';
+import { JustifyContentProperty } from 'csstype';
 
 const HeaderWrapper: any = styled.header`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 0.5rem 1rem 0.5rem;
+  padding: 2rem 1rem 0.5rem;
   text-align: left;
 `;
 
-const Content = styled.div`
-  position: relative;
+const Content = styled.div<{ direction?: 'row' | 'column', justify?: JustifyContentProperty }>`
   z-index: 999;
-  flex: 1 1 40rem;
   max-width: 40rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: ${props => (props.direction ? props.direction : 'row')};
+  justify-content: ${props => props.justify};
   a {
     &:hover {
       opacity: 0.85;
     }
   }
+`;
+
+const HeaderTitle = styled.span`
+  font-size: 1.8rem;
+  font-family: ${(props: { theme: Theme }) => props.theme.fontFamily.heading};
+  font-weight: 900;
 `;
 
 interface Props {
@@ -31,7 +40,16 @@ export class Header extends React.PureComponent<Props> {
   public render() {
     return (
       <HeaderWrapper banner={this.props.banner || config.defaultBg}>
-        <Content>{this.props.children}</Content>
+        <Content justify="space-between">
+          <div>
+            <HeaderTitle>Jesús Quintana</HeaderTitle>
+            <br />
+            <Link to="/">{config.siteTitle}</Link>
+          </div>
+          <Nav />
+        </Content>
+        <br />
+        <Content direction="column">{this.props.children}</Content>
       </HeaderWrapper>
     );
   }

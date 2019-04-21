@@ -8,7 +8,6 @@ import config from '../../config/SiteConfig';
 import '../utils/prismjs-theme.css';
 import PathContext from '../models/PathContext';
 import Post from '../models/Post';
-import { media } from '../utils/media';
 import { Date } from '../components/Date';
 
 const PostContent = styled.div`
@@ -35,13 +34,12 @@ export default class PostPage extends React.PureComponent<Props> {
             <SEO postPath={post.fields.slug} postNode={post} postSEO />
             <Helmet title={`${post.frontmatter.title} | ${config.siteTitle}`} />
             <Header banner={post.frontmatter.banner}>
-              <Link to="/">{config.siteTitle}</Link>
               <SectionTitle>{post.frontmatter.title}</SectionTitle>
               <Subline light={false}>
                 <Date date={post.frontmatter.date} />
                 <br />
                 {post.timeToRead} Min Read
-                <br /> 
+                <br />
                 <Link to={`/categories/${kebabCase(post.frontmatter.category)}`}>{post.frontmatter.category}</Link>
               </Subline>
             </Header>

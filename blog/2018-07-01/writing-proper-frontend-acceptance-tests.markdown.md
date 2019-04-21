@@ -3,9 +3,10 @@ title: "Writing proper web acceptance tests"
 category: "Technology"
 date: "2018-07-08"
 tags: ['e2e', 'frontend', 'puppeteer', 'jest', server 'stub', 'tests', 'acceptance', 'tdd',]
+banner: "asdasdasd"
 ---
 
-<!-- {% asset 2018-07-01-writing-proper-frontend-acceptance-tests.png class="center-image post-main-image" alt="Jekyll SEO tutorial represented by tools" !width !height %} -->
+![Acceptance Test](./header.png "Acceptance Test")
 
 The first thing you hear about TDD/BDD is this:
 

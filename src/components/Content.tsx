@@ -5,7 +5,6 @@ export const Content = styled.div`
   flex-direction: column;
   width: 100%;
   z-index: 9000;
-  flex: 1 1 40rem;
   max-width: 40rem;
   form {
     p {

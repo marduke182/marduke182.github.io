@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import { Layout, Article, Wrapper, SectionTitle, Header, Content, Pagination } from '../components';
 import Helmet from 'react-helmet';
 import config from '../../config/SiteConfig';
@@ -18,14 +18,13 @@ export default class BlogPage extends React.Component<Props> {
     const { currentPage, totalPages } = this.props.pageContext;
 
     const { data } = this.props;
-    const { edges, totalCount } = data.allMarkdownRemark;
+    const { edges } = data.allMarkdownRemark;
 
     return (
       <Layout>
         <Helmet title={`Blog | ${config.siteTitle}`} />
         <Header>
-          <Link to="/">{config.siteTitle}</Link>
-          <SectionTitle uppercase={true}>Latest stories ({totalCount})</SectionTitle>
+          <SectionTitle uppercase={true}>All the posts</SectionTitle>
         </Header>
         <Wrapper>
           <Content>

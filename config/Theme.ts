@@ -24,9 +24,35 @@ const fontFamily = {
   normal: '"Merriweather","PT Serif",Georgia,"Times New Roman",serif',
 };
 
-export default {
+export type Theme = {
+  fontFamily: {
+    heading: string;
+    normal: string;
+  };
+  fontSize: {
+    small: string;
+    big: string;
+  };
+  transitions: {
+    normal: string;
+  };
+  colors: {
+    primary: string;
+    bg: string;
+    white: string;
+    grey: {
+      dark: string;
+      default: string;
+      light: string;
+      ultraLight: string;
+    };
+  };
+};
+
+const theme: Theme = {
   colors,
   transitions,
   fontSize,
   fontFamily,
 };
+export default theme;

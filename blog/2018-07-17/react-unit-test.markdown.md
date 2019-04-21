@@ -2,11 +2,11 @@
 title: "My Approach to do Unit Test in React"
 category: "Technology"
 date: "2018-07-17"
-preview_image: react-unit-testing.jpg
 tags: ['jest', 'enzyme', 'react', 'test', 'unit',]
+banner: "asdasdasd"
 ---
 
-<!-- {% asset react-unit-testing.jpg class="center-image post-main-image" alt="React Unit Testing" !width !height %} -->
+![React Unit Test](./header.jpg "React Unit Test")
 
 Starting with test is not easy, but if you are trying to do TDD while improving your code quality and/or speed it's a must. Having a test discipline doesn't make you a faster developer but it helps a lot in maintaining the code and empowers you with the confidence to perform refactors and implement new features very fast.
 
