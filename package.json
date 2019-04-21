@@ -12,7 +12,7 @@
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r git@github.com:marduke182/marduke182.github.io.git",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r git@github.com:marduke182/marduke182.github.io.git -b master",
     "lint": "tslint --project .",
     "lint:fix": "tslint --fix --project .",
     "fix": "prettier --write 'src/**/*.{ts,tsx,scss,md}' && tslint --fix 'src/**/*.{ts,tsx}' -p tsconfig.json && stylelint --fix 'src/**/*.scss' "
