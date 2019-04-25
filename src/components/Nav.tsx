@@ -14,6 +14,7 @@ const NavStyled: any = styled.nav`
 export const Nav: React.FunctionComponent = () => (
   <NavStyled>
     <Link to="/about-me">About Me</Link>
+    <Link to="/resume">Resume</Link>
     <Link to="/blog">Blog</Link>
   </NavStyled>
 );
