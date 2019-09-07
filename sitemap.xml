@@ -20,4 +20,5 @@
 <url> <loc>https://jquintanab.com/blog/writing-proper-web-acceptance-tests</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jquintanab.com/about-me/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jquintanab.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jquintanab.com/resume/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
