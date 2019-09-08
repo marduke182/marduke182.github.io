@@ -52,7 +52,12 @@ module.exports = {
               rel: 'nofollow noopener noreferrer',
             },
           },
-          'gatsby-remark-prismjs',
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              showLineNumbers: true,
+            }
+          },
           'gatsby-remark-autolink-headers',
           {
             resolve: `gatsby-remark-images`,
@@ -61,6 +66,7 @@ module.exports = {
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
               maxWidth: 800,
+              showCaptions: true,
             },
           },
         ],

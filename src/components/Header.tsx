@@ -32,7 +32,6 @@ const HeaderTitle = styled.span`
 `;
 
 interface Props {
-  children: any;
   banner?: string;
 }
 
@@ -49,7 +48,7 @@ export class Header extends React.PureComponent<Props> {
           <Nav />
         </Content>
         <br />
-        <Content direction="column">{this.props.children}</Content>
+        {this.props.children && <Content direction="column">{this.props.children}</Content>}
       </HeaderWrapper>
     );
   }

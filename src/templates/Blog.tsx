@@ -3,10 +3,11 @@ import { graphql } from 'gatsby';
 import { Layout, Article, Wrapper, SectionTitle, Header, Content, Pagination } from '../components';
 import Helmet from 'react-helmet';
 import config from '../../config/SiteConfig';
-import Data from '../models/Data';
+import { PostGraphqlResponse } from '../../types';
+
 
 interface Props {
-  data: Data;
+  data: PostGraphqlResponse;
   pageContext: {
     currentPage: number;
     totalPages: number;

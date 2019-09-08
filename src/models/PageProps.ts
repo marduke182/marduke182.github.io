@@ -1,9 +1,9 @@
 import PathContext from './PathContext';
 import PageResources from './PageResources';
-import Data from './Data';
+import { PostGraphqlResponse } from '../../types';
 
 interface PageProps {
-  data: Data;
+  data: PostGraphqlResponse;
   location: Location;
   pageResources?: PageResources;
   pathContext: PathContext;

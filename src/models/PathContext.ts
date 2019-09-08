@@ -1,4 +1,4 @@
-import Post from './Post';
+import { Post } from '../../types';
 
 interface PathContext {
   tags?: string[];

@@ -30,7 +30,7 @@ You can do tests **without Enzyme**, that's a fact, likewise, you can do a web a
 
 For example, this is a test with test utils:
 
-```jsx
+```jsx{numberLines: true}
 test('should create account', async () => {
   const createAccount = ReactTestUtils.renderIntoDocument(
     <CreateAccount onCreate={onCreate} />,
