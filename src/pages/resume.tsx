@@ -31,7 +31,7 @@ export default class ContactPage extends React.Component<PageProps> {
                 </p>
               </section>
               <section className="Resume-objective">
-                <h2>Summary overview</h2>
+                <h3>Summary overview</h3>
                 <p>
                   Software Engineer looking for a position at an innovative company, where I can apply my seven years of developer
                   experience to improve the experience of users.
@@ -42,17 +42,32 @@ export default class ContactPage extends React.Component<PageProps> {
                 </p>
               </section>
               <section className="Resume-experience">
-                <h2>Work History</h2>
+                <h3>Work History</h3>
                 <article>
                   <header>
-                    <h3>
-                      <b>Senior Software Engineer</b>, Digital Origin, February 2016 - present.
-                    </h3>
+                    <h4>
+                      <b>Senior Software Engineer</b>, Atlassian, January 2019 - present.
+                    </h4>
+                  </header>
+                  <section>
+                    <ul>
+                      <li>
+                        Working on the Editor Team. This is the WYSWYG text editor used by Jira and Confluence. {' '} 
+                        <a href="https://bitbucket.org/atlassian/atlaskit-mk-2/src/master/" target="_bitbucket">Atlaskit Bitbucket</a>
+                      </li>
+                    </ul>
+                  </section>
+                </article>
+                <article>
+                  <header>
+                    <h4>
+                      <b>Senior Software Engineer</b>, Digital Origin, Fenbruary 2016 - October 2018.
+                    </h4>
                   </header>
                   <section>
                     <ul>
                       <li>Developed TDD guidelines and create architecture to develop isolate frontend E2E tests.</li>
-                      <li>Working with the team to develop our internal shared component libraries.</li>
+                      <li>Develop our internal shared component libraries.</li>
                       <li>Promote and implement docker in all company projects.</li>
                       <li>Bring new front-end architecture to all our projects, migrating old apps and builds to React and Webpack.</li>
                     </ul>
@@ -60,9 +75,9 @@ export default class ContactPage extends React.Component<PageProps> {
                 </article>
                 <article>
                   <header>
-                    <h3>
-                      <b>Senior Software Engineer</b>, Freelancer, October 2013 - present.
-                    </h3>
+                    <h4>
+                      <b>Senior Software Engineer</b>, Freelancer, October 2013 - January 2017.
+                    </h4>
                   </header>
                   <section>
                     <ul>
@@ -73,9 +88,9 @@ export default class ContactPage extends React.Component<PageProps> {
                   </section>
                 </article>
                 <article>
-                  <h3>
+                  <h4>
                     <b>Senior Software Engineer</b>, Tiqueteo Spain S.L, November 2013 - February 2016.
-                  </h3>
+                  </h4>
                   <section>
                     <ul>
                       <li>Communicate new ideas and technologies to improve code quality and maintenance.</li>
@@ -85,9 +100,9 @@ export default class ContactPage extends React.Component<PageProps> {
                   </section>
                 </article>
                 <article>
-                  <h3>
+                  <h4>
                     <b>Functional Manager</b>, Synergy Global Business, January 2012 - September 2013.
-                  </h3>
+                  </h4>
                   <section>
                     <ul>
                       <li>Lead team of 4 web developers building modern applications for ~50k concurrent users.</li>
@@ -96,9 +111,9 @@ export default class ContactPage extends React.Component<PageProps> {
                   </section>
                 </article>
                 <article>
-                  <h3>
+                  <h4>
                     <b>Software Engineer</b>, Synergy Global Business, June 2011 - January 2012.
-                  </h3>
+                  </h4>
                   <section>
                     <ul>
                       <li>Developed and delivered multiple web and android applications</li>
@@ -107,7 +122,7 @@ export default class ContactPage extends React.Component<PageProps> {
                 </article>
               </section>
               <section className="Resume-education">
-                <h2>Education</h2>
+                <h3>Education</h3>
                 <article>
                   <p>
                     <b>Master on project management</b>, EAE Business School, 2014.
@@ -120,7 +135,7 @@ export default class ContactPage extends React.Component<PageProps> {
                 </article>
               </section>
               <section className="Resume-skills">
-                <h2>Technical Skills</h2>
+                <h3>Technical Skills</h3>
                 <sub>Strong skills*</sub>
                 <dl>
                   <dt>Languages:</dt>
