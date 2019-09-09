@@ -5,19 +5,19 @@ import { Layout, Wrapper, Header, Content, SectionTitle } from '../components';
 import config from '../../config/SiteConfig';
 import PageProps from '../models/PageProps';
 
+
+
 export default class ContactPage extends React.Component<PageProps> {
   public render() {
     return (
       <Layout>
         <Helmet title={`About Me | ${config.siteTitle}`} />
-        <Header>
-          <SectionTitle uppercase={true}>Resume</SectionTitle>
-        </Header>
+        <Header />
         <Wrapper>
           <Content>
             <div className="Resume">
               {/*https://www.thebalancecareers.com/guidelines-for-what-to-include-in-a-resume-2061035*/}
-              <section className="Resume-identification">
+              <section className="Resume-identification" style={{textAlign: 'right'}}>
                 <p>
                   <b>Jesús Quintana</b>
                   <br />

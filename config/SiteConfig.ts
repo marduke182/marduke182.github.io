@@ -2,7 +2,7 @@ export default {
   pathPrefix: '/', // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
 
   siteTitle: `Inside a Developer's Head`, // Navigation and Site Title
-  siteTitleAlt: 'Typescript Power Blog - Gatsby Starter', // Alternative Site title for SEO
+  siteTitleAlt: `Inside a Developer's Head`, // Alternative Site title for SEO
   siteUrl: 'https://jquintanab.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteBanner: '/assets/banner.jpg', // Your image for og:image tag. You can find it in the /static folder

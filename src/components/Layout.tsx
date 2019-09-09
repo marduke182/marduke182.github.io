@@ -80,7 +80,7 @@ export class Layout extends React.PureComponent<{}> {
         query={graphql`
           query LayoutQuery {
             site {
-              buildTime(formatString: "DD.MM.YYYY")
+              buildTime(formatString: "DD-MM-YYYY")
             }
           }
         `}
@@ -90,7 +90,7 @@ export class Layout extends React.PureComponent<{}> {
               <GlobalStyle />
               {children}
               <Footer>
-                &copy; {split(data.site.buildTime, '.')[2]} by Jesús Quintana. <br />
+                &copy; {split(data.site.buildTime, '-')[2]} by Jesús Quintana. <br />
                 <span>Last build: {data.site.buildTime}</span>
               </Footer>
             </React.Fragment>
