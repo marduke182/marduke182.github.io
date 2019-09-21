@@ -5,7 +5,6 @@ import Helmet from 'react-helmet';
 import config from '../../config/SiteConfig';
 import { PostGraphqlResponse } from '../../types';
 
-
 interface Props {
   data: PostGraphqlResponse;
   pageContext: {

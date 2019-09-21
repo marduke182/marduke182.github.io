@@ -45,6 +45,7 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
+        footnotes: true,
         plugins: [
           {
             resolve: 'gatsby-remark-external-links',

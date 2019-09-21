@@ -1,4 +1,3 @@
-
 export interface Frontmatter {
   date: string;
   title: string;
@@ -18,9 +17,8 @@ export interface Post {
   timeToRead: number;
 }
 
-
 export interface PostGraphqlResponse {
   allMarkdownRemark: {
-    edges: Array<{node: Post}>
-  }
+    edges: { node: Post }[];
+  };
 }

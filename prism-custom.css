@@ -44,3 +44,19 @@ pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 code[class*="language-"]::selection, code[class*="language-"] ::selection {
 	background: rgba(88, 110, 117, .59) ; /* base02 */
 }
+
+.gatsby-highlight-code-line {
+  background-color: rgba(88, 110, 117, .59);
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid rgba(88, 110, 117, .90);
+}
+
+:not(pre) > code[class*="language-"] {
+  color: #ff6200;
+  padding: .1em .5em;
+  background-color: #f8f8f8;
+}
