@@ -2,13 +2,13 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { Layout, Wrapper, Header, Content } from '../components';
 import { Link } from '@reach/router';
+import formatDistance from 'date-fns/formatDistance'
 
 import config from '../../config/SiteConfig';
 import PageProps from '../models/PageProps';
 
 function calculateAge(birthdate: Date) {
-  const now = Date.now();
-  return Math.floor((now - birthdate.getTime()) / 1000 / 60 / 60 / 24 / 365.25);
+  return formatDistance(birthdate, Date.now());
 }
 export default class ContactPage extends React.Component<PageProps> {
   public render() {
@@ -22,7 +22,7 @@ export default class ContactPage extends React.Component<PageProps> {
               <section id='me'>
                 <h3>Hi! It's me! Jesús</h3>
                 <p>
-                I am a citizen of planet earth, with my {calculateAge(new Date('01-19-1987'))} years old 
+                I am a citizen of planet earth, with {calculateAge(new Date(1987,0,19))} old 
                 I have had the pleassure to live in <strong>Caracas</strong> for 25 years,{' '} 
                 <strong>Barcelona (Spain)</strong> for 6 years and now in <strong>Sydney</strong>.
                 </p>
@@ -69,7 +69,7 @@ export default class ContactPage extends React.Component<PageProps> {
                   I dont have a Box close to my house 😔.
                 </p>
                 <p>
-                  Finally, I got in love of boardgames like {calculateAge(new Date('08-09-2016'))} years ago, I blame Pandemic and Catan, after
+                  Finally, I got in love of boardgames like {calculateAge(new Date(2016,8,8))} ago, I blame Pandemic and Catan, after
                   playing those games I got addict and started having my own collection, right now my favorite boardgames are: Terraforming Mars,
                   Gloomhaven and Spirit Island. 
                 </p>

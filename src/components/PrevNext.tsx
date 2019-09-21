@@ -6,7 +6,7 @@ import Post from '../models/Post';
 
 const Wrapper = styled.div`
   display: flex;
-  margin: 6rem auto 0 auto;
+  margin: 3rem auto 0 auto;
   a {
     color: ${props => props.theme.colors.primary};
     display: flex;
@@ -16,15 +16,16 @@ const Wrapper = styled.div`
 `;
 
 const Prev = styled.div`
+  margin-right: 1rem;
   span {
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.8rem;  
     color: ${props => props.theme.colors.grey.light};
   }
 `;
 
 const Next = styled.div`
-  margin-left: auto;
+  margin-left: 1rem;
   text-align: right;
   span {
     text-transform: uppercase;

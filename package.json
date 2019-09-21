@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "@marduke182/date": "1.0.0",
+    "date-fns": "^2.2.1",
     "gatsby-plugin-google-tagmanager": "^2.0.5",
     "gatsby-plugin-sharp": "^2.0.35",
     "gatsby-plugin-web-font-loader": "^1.0.4",
