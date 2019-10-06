@@ -26,6 +26,8 @@ After using typescript for 7 months now, I can honest said, we should use typesc
 
 ##Guide
 
+> This is an ongoing personal guide about how I should type my own code, use it on your own responsability
+
 Let's start with what you should **not** do:
 
 * You **must not** use generic types like, `any`, `object` and `array`. Using generics types make no sense, just  code in plain Javascript instead. I know sometimes is hard to create some types, I have been there triying to type `compose` and `pipe` functions. Trust me, if you can do that you can type anything you want.
