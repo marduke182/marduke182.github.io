@@ -1,275 +1,363 @@
 ---
-title: "My personal guide to use types in JS"
+title: "A journey into typed JavaScript"
 category: "Technology"
 date: "2018-07-17"
 tags: ['types', 'js', 'javascript', 'typescript']
 ---
 
-> TLDR: Little history about how and why I started using types, if you want to read the guide go direct to the  [guide](#guide) section
+Let's start from the beginning, it was 2015, I was an Angular Developer at the time, it was the glorious era of `directives`, `services`, `factories` and `controllers`. Angular 2 was becoming  a thing, and the core team started showing this new language,  **WTF??**  a new language?, who is going to used that?.  That was my first time I heard about **Typescript** and my first time where I fully embrace **React** :D.
 
-It was 2015, I was an Angular Developer at the time, you remember that, it was the era of `directives`, `services`, `factories` and `controllers`. I was excited for the new announcent of Angular 2 and the moment arrived, they started showing the new architecture and **WHAT?!!** is that language?? are they crazy??  That was my first time I heard about **Typescript** and my first time where I fully embrace **React** :D.
+At the moment, I really didn't understand the need of types, Javascript is pretty cool you have the flexibility to do whatever you want, whenever you want. To the contrary, of languages like **Java** where you have to write 500 lines of code to print *Hello World*. After been a Java developer for 3 years, I didn't want to happen the same for **JavaScript**.
 
-I really didn't understand the need of types, Javascript is pretty cool you have the flexibility to do whatever you want, whenever you want. In contrary, of languages like **Java** where you have to write 500 lines of code to print *Hello World*, and after developing for 3 years with Java, I didn't want the same for Javascript.
+
 
 ## 5 years later
 
-I have to admit, I was blind for my emotions, after 3 years I started understanding why types are important, but I never has the need to use in my previous jobs or personal projects. Now, I cannot live without them. There are two **must use** for *Typescript*:
+I have to admit, I was blind for my emotions, after 3 years I started understanding why types are important, mostly for bigger teams. Nevertheless, I have never had the opportunity to use it in my previous jobs or personal projects. Now, I cannot live without them. For me is a **must** to started any new project with it.
 
 
 
-* Libraries, are the most benefited from using types. Why? It's easy, as a Library you should export types to cover a growing group of developers using types. Therefore, creating types automatically from your source code remove a lot of overhead in the final product.
-* Big teams/codebases, sharing information between team is hard, but is possible if the amount of information we need to share is small. For big teams is complicate to understand the whole codebase and mistakes will be made. Typescript helps for bigger refactors, for understanding external libraries or components , etc.
+### Why?
 
-After using typescript for 7 months now, I can honest said, we should use typescript for any project that we transpile. Mostly, because the only throwback of using Typescript is the need to add a build system to transpile your code. Nowadays, most of our code is transpiled, so the last statement is almost always true.
+Is pretty simple, some of the benefits are:
+
+* Intellisense, if you comes from *typed* languages like *Java* you might know this amazing feature where you code just pressing the space bar, with typescript you can do pretty much the same.
+* Documentation, as you type your code you are adding metadata that your IDE will use as a documentation, so no more *"this var is a string or is a number? maybe can me undefined?"*
+* Refactoring, when you have big code bases it makes harder to find all the dependencies every time you want to move a file, or only change the name of a *exported* function.
+* Transpilation, we already transpile our code base (and this is not going to change in the near future). Hence, if we already are going to add in our pipeline babel, it's not to expensive to add *@babel/preset-typescript*
+* Libraries, are the ones that get more benefits from this. Free documentation, type definition file generation, etc. Thus, I highly recommend to use it if you are planing to share some code :smirk:
+
+> Keep in mind that if you just want to do something very small and simple typescript might not be what you need, and that it's perfect. Old, plain JavaScript will always be there :muscle:.
+
+In conclusion, after using typescript for almost  1 year now, I highly recommend you to try it if you havent.
 
 
 
-##Guide
+## Getting Started
 
-> This is an ongoing personal guide about how I should type my own code, use it on your own responsability
+As any other build tool to start using it is required to add a configuration file, aka `tsconfig.json`, let's see a small example:
 
-Let's start with what you should **not** do:
 
-* You **must not** use generic types like, `any`, `object` and `array`. Using generics types make no sense, just  code in plain Javascript instead. I know sometimes is hard to create some types, I have been there triying to type `compose` and `pipe` functions. Trust me, if you can do that you can type anything you want.
-* You **should not** use exclamation (*!*) to escape possible `undefined` or `null` values. The same as before, it is a pottential point of failure in your application, it safest to just check if the variable exist just before using it. Some places where I allowed the usage is inside tests, because usually test environments are different that real ones.
-* You **must not** use enums. Check [enum](#enum) section for a better explanation
-
-Ok, now we can start we basic typings.
-
-> We are going to create a type definition for a D&D application
-
-###Typing Javascript
-
-Adding types into your code is quite straightforward, any valid Javascript code is also a compilable in Typescript. By default, It would try to infer the types based of the original values, yet, it's not possible to automatically identify everything.
-
-When the compiler cannot deduce the type, transorm any unknown value into `any` on our code (We dont want this). I would suggest to start with a light *ts-config.json*, This is my current configuration for this blog:
 
 ```json
+// Basic tsconfig example
 {
+  "include": ["./src/**/*"], // The files that will compile
+  "exclude": ["src/**/__tests__/*"], // Exclude your tests
+  "files": ["./some-lib-definition-file.d.ts"], // Usefull to import non existent types for libs
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "esnext",
-    "jsx": "preserve",
-    "lib": [
-      "dom",
-      "es2015",
-      "es2017"
-    ],
-    "strict": true,
-    "noEmit": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "removeComments": false,
-    "preserveConstEnums": true
-  },
-  "include": [
-    "./src/**/*"
-  ]
+    "module": "commonjs", // We are going to use commonjs modules
+    "target": "es5", // We are going to use the latest javascript, we might change this for final buil, dont break the web 
+    "lib": ["dom", "es2015", "es2017"], // We add predefined libraries based on what are we using (this will add types for dom elements and all latest features in javascript)
+  }
+}
+
+```
+
+Once you have this configuration in your project, you should install `typescript` package as a dev dependency `npm i -D typescript` or `yarn add --dev typescript` will do the job. Now you should be able to build your project:
+
+```json
+// package.json
+{
+  "scripts": {
+    "build": "yarn run build:cjs && yarn run build:esm",
+    "build:cjs": "tsc --project ./tsconfig.json --outDir ./dist/cjs --module commonjs",
+    "build:esm": "tsc --project ./tsconfig.json --outDir ./dist/esm --module esnext",
+    "typecheck": "tsc --noEmit --project ./tsconfig.typecheck.json" // You might want to have a custom to includes another files.
+  }
 }
 ```
 
-It is a bit strict, but prevent from having unidentified types in our code 🙌🎉🙌.
+That is, it's pretty simple.
 
-### Types
+### Integrations
 
-There are four basic types `string`, `number`, `array`, or `object`, we can use it in any place of our code using *colon* (:) or in some cases we cast the value using `as` value.
+Now let's talk about integrations, one thing is to build your package if you are a library, but most of the time you are going to use your current code with existing tools like `webpack`, `storybook`, `jest`, etc. Or you might want to compile using your current babel configuration, that's also possible.
 
-```typescript
-const aNumber: number = 1;
-const aString: string = 'Hello';
-const anArray: [] = []; // Bad, We should use non typed arrays
-const aTypedArray: string[] = ['Hello', 'World']; // Good
-const anObject: object = {}; // Bad, we should use interfaces or dynamic object instead
 
-const aCustomString = '1' as CustomString; // Custom String is a type who contains '1'
-```
 
-We can create new types using different methods, the most basics are union (*|*), intersection (*&*) and aliases, As a example:
+#### Webpack
 
-```typescript
-type Races = 'humans' | 'elfs' | 'drows' | 'dwarf' | 'halfling'; // Union
-type Name = string; // Alias
-type BasicSheet = { name: Name } & { race: Races}; 
-
-```
-
-We are going to talked how to make more complex types in the [advance types](#advance-types) section.
-
-### Interface
-
-We use interface syntax  to describe plain objects, this work similar to Java and should be used when you want to define a object  with known attributes. A key difference between `type` and  `interface`, It`s that the last one can be *extended*, *implemented* or *extend* other interfaces. However, we cannot represent unions, intersections or simple types using interfaces.
-
-#### Declaration
-
-You can create an interface with any basic type (`string`, `number`, `array`, or `object`) and you can also use any type we are going to explain in this guide. This is a basic interface using only basic types.
-
-```typescript
-interface CharacterSheet {
-  name: string,
-  race: string,
-  dndClass: string,
-  stats: CharacterStats, // highlight-line
-  level: number,
-  skills: string[],
-}
-```
-
-As you can noticed, we are using `object` type for the *stats* attribute and as I mentioned before this is a no go. Lucky for use we can use another interface as a type, like this,
-
-```ts
-interface CharacterStats {
-  strength: number,
-  dexterity: number,
-  constitution: number,
-  inteligence: number,
-  wisdow: number,
-  charisma: number,
-  'hit-points': number,
-}
-```
-
-If we do the same with the other attributes, we ends with this final interface:
-
-```typescript
-interface CharacterSheet {
-  name: string,
-  level: number,
-  // highlight-start
-  race: CharacterRace,
-  dndClass: CharacterClass,
-  stats: CharacterStats,
-  skills: Skill[],
-  // highlight-end
-}
-```
-
-### Infered object
-
-Typescript can infer all the basic types. Hence, when you create an object from scratch it, Typescript would infer the initial type of this variable as the initial keys with the respective basic type from the value. In other words, you will get a type error when trying to add a new key, or when you tried to change the type from an existing key.
-
-> Tip:  If you have to create a partial object you can use `Partial<Object>` helper.
-
-```typescript
-const notypedCharacter = { name: 'Raistlin' };
-
-notypedCharacter.level = 30; // Error: Property 'level' does not exist on type '{ name: string; }'
-notypedCharacter.name = 1; // Error: Type '1' is not assignable to type 'string'
-
-notypedCharacter.name = 'Caramon'; // It's valid
-```
-
-We need to take this into consideration, It's a common error and is hard to understand what is happening. My recommendation is always create an `interface`.
-
-#### Mapped types
-
-A most advance way to declare objects is creating dinamyc objects, let's write our skill interface using this method:
-
-```typescript
-type Stats =  'strength' | 'dexterity' | 'constitution' | 'inteligence' | 'wisdow' | 'charisma' | 'hit-points';
-type CharacterStats = { [key in Stats]: number };
-// Or in recent version we can use record instead
-type CharacterStatsRecord = Record<Stats, number>;
-```
-
-We have a lot of benefits using dinamyc objects, such as, reusability of external type `Stats`, in this way we can create a function like:
-
-```typescript
-type savingRoll = (character: CharacterSheet, stat: Stats) => boolean
-```
-
-And we are going to have consistency between `character` and `stats`.
-
-#### How to use an interface?
-
-Now you can create any *character sheet* and assure integrity. You can use it as any basic type, for example:
-
-* Create a variable
-
-```typescript
-import { human } from './races';
-import { mage } from './classes';
-
-const Raistlin: CharacterSheet = {
-  name: 'Raistlin Majere',
-  level: 30,
-  race: human,
-  dndClass: mage,
-  stats: {
-    strength: 10,
-    dexterity: 16,
-    constitution: 8,
-    inteligence: 30,
-  	wisdow: 16,
-    charisma: 17,
-    'hit-points': 76,
-  },
-  skills: [],
-}
-```
-
-* Create a class implementing the interface
+For webpack there are a couple of solutions, but the one I use is `awesome-typescript-loader`,  you just need to add the loader and the resolve extensions:
 
 ```javascript
-class Raistlin implements CharacterSheet {
-  name: 'Raistling Majere';
-  level: 30;
-	...
+// webpack.config.js
+modules.exports = {
+  //...,
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        loader: require.resolve('awesome-typescript-loader'),
+      },
+    ]
+  },
+  //...,
+  resolve: {
+    extensions: ['js', 'jsx', 'ts', 'tsx'],
+  }
+  //...,
 }
 ```
 
+This also work for Storybook:
+
+```javascript
+//./storybook/webpack.config.js
+module.exports = async ({ config }) => {
+  config.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    loader: require.resolve('awesome-typescript-loader'),
+  });
+  
+  config.resolve.extensions.push('.ts', '.tsx');
+
+  return config;
+};
+```
 
 
-### Functions
+
+#### Jest
+
+For jest we are going to use `ts-jest`, it comes with predefined presets:
+
+```javascript
+// jest.config.js
+module.exports = {
+  preset: 'ts-jest',
+  globals: {
+    'ts-jest': {
+      diagnostics: false, 	// We dont want to check types on our tests
+    },
+  },
+  testMatch: ['**/__tests__/*.+(ts|tsx|js)'],
+};
+```
 
 
 
-#### Destructuring, arguments, etc
+#### Babel
 
-#### Overloading?
+As an alternative you can transpile your typescript files using babel, the benefits of doing this is that you take advantage of your current pipeline to process the files. However, your are going to miss build types validation, and  it doesnt support fancy stuff like `const enumns` or `namespace`, also is going to ignore most of your `tsconfig.json` file. To use it with babel you just have to add `@babel/preset-typescript` in your config:
+
+```
+{  
+	"presets": ["@babel/preset-typescript"] 
+} 
+```
 
 
 
-### Enum 
+### Protips
+
+Now, I will share few tips that I would like to know before start with typescript:
+
+
+
+#### 1. Custom file for shared types
+
+It might sound smart to have the type definition in the same file as the implementation, it bring you a lot of flexibility to change the definition everytime you want to change the code, actually, that works perfect for **React** props. 
+
+Despite of that, we need to be aware about what types are used for other components to reduce internal dependencies, remember that typescript will remove all the types from the modules, thus, all the extra code will be there, causing an internal dependency to an external module just for importing a type. For example:
 
 ```typescript
-type FlattenIfArray<T> = T extends (infer P)[] ? P : never;
-type EnumOf<T extends object> = T[keyof T];
-
-function Enum<T extends string[]>(...args: T) {
-  return Object.freeze(args.reduce((acc, next) => {
-    return {
-      ...acc,
-      [next]: next,
-    };
-  }, Object.create(null)) as { [P in FlattenIfArray<typeof args>]: P });
+// User.tsx
+interface Props {
+  id: string,
 }
 
-const Stats = Enum('strength', 'dexterity', 'constitution', 'inteligence', 'wisdow', 'charisma', 'hit-points');
-type Stats = EnumOf<typeof Stats>;
+export interface User {} // Bad
 
+export const useUser = (id: string): User => {/*fancy hook to retrieve the user*/}
+export const User: FunctionComponent<Props> = ({id}) => {
+	const user = useUser(id);
+  return //someting
+}
+
+// a file that use the user to do something
+import ( User) from './User'; // Is importing the type definition, but it has to load the whole User (including react + component code)
+
+export const getUsername = (user: User) => `${user.name} ${user.last_name}`
 ```
 
-This implementation is based on [rex-tils](https://github.com/Hotell/rex-tils) npm package.
+In the above case, if we want to test only the `getUsername` function, *Jest* will have to load React and the User component even if we are not going to used it. Noticed that is a small case, now imagine a big monorepo where the package `Y` import `User` from this package, the build/jest times are going to goes up, even could affect bundle size of the application if *tree-shaking* is not well configured.
+
+My recommendation just create a `types.ts` file with just the shared type of a component, the above example can be rewrite as:
+
+```typescript
+//./user/types.tsx
+export interface User {} // Good
+
+// ./user/User.tsx
+interface Props {
+  id: string,
+}
+
+export const useUser = (id: string): User => {/*fancy hook to retrieve the user*/}
+export const User: FunctionComponent<Props> = ({id}) => {
+	const user = useUser(id);
+  return //someting
+}
+
+// ./user/utils.tsx
+import ( User) from './types'; // just import all the types, no source code
+export const getUsername = (user: User) => `${user.name} ${user.last_name}`
+```
 
 
 
-### Advance types
+#### 2. Interface over class definition
+
+By default typescript will create a new type every time you do a new class, this works properly most of the time, but as in the previous case when you need to share the type and not the code this start to become a problem, let's see a small example:
 
 
 
 ```typescript
-type Pick;
-type Diff;
+// dnd-provider.ts
+export class DnDProvider {
+	findRace(id: string): Race {/*some code*/},
+  findMonster(id: string): Monster {/*some code*/}
+	/*some code*/
+}
 
-// Generic Types
-<>
-  
-// Inference
-  
+// app.ts
+import { DndProvider } from './dnd-provider.ts'
+
+interface Props {
+  dndProvider?: DndProvider, 
+}
+
+export const App: FunctionCompomnet<Props> = ({ dndProvider}) => {/*Do something */}
 ```
+
+As you can noticed, we are loading a whole class implementation just to type our component and the worst part is, that it's an optional prop, so we might no need it in our app :man_facepalming:. Now lets a look to this:
+
+```typescript
+// types.ts
+interface RpgProvider {
+  findRace(id: string): Race,
+  findMonster(id: string): Monster,
+  {/*others methods*/}
+}
+
+// dnd-provider.ts
+export class DnDProvider implements RpgProvider {
+  {/*implementation*/}
+}
+
+// pathfinder-provider.ts
+export class PathfinderProvider implements RpgProvider {
+  {/*implementation*/}
+}
+
+// app.ts
+import { RpgProvider } from './types.ts'
+
+interface Props {
+  rpgProvider?: RpgProvider, 
+}
+
+export const App: FunctionCompomnet<Props> = ({ rpgProvider}) => {/*Do something */}
+
+```
+
+We are combining the solution on point one together with `interface` and `implements`, we created a new generic interface on his own file to allow reusability without extra source code, and we are using it in two different providers. At the beginning, `implements` would be confusing, it works pretty different to other languages, you will have to type each function by yourself :cry:, *inference* doesn't work.
+
+
+
+#### 3. Inference using generic
+
+One of the most amazing features of typescript is called type inference, this is done at any moment for every piece of code you create, that's how typescript can work with old Javascript. In addition, we can do really complex inference, for example:
+
+```typescript
+interface Providers {
+  aProvider: AProvider,
+  bProvider: BProvider,
+  cProvider: CProvider,
+  [key: string]: any,
+}
+
+const useProvider = <P extends string>(id: P): Providers[P] => {
+  return {} as Providers[P]
+}
+
+const aProvider = useProvider('aProvider'); // type is AProvider
+const cProvider = useProvider('cProvider'); // type is CProvider
+const aProvider = useProvider('aProvider'); // type is any
+```
+
+This is one of the way to apply the inference, as you can see, we are using the generic type to extract the type from a `Providers` interface, the potential of this is big, now we can write generic functions and just using a string we are going to get the correct type :open_mouth:. This is not the only example, lets try something more advance, Have you heard of react HOC? I know they are not recommended now, but let's try to type a custom **HOC**:
+
+```typescript
+// our hook
+export const withTheme = <Props extends { theme: Theme }>(
+  WrappedComponent: ComponentType<Props>,
+) => {
+  const WithTheme: FunctionComponent<Omit<Props, 'theme'>> = props => {
+    const theme = useTheme();
+    return <WrappedComponent theme={theme} {...(props as Props)} />;
+  };
+  return WithTheme;
+};
+
+// our component
+interface ButtonProps {
+  name: string;
+  value: string;
+  theme: Theme;
+  {..etc}
+}
+const Button: FunctionComponent<Props> = ({ theme, ...props }) => {
+  return <button />;
+};
+const ThemedButton = withTheme(Button); // The type is FunctionComponent<Pick<ButtonProps, 'name' | 'value'>>
+
+```
+
+Oh cool, the final component has all the props from button except the `theme`, even if I never specified the original props when I called `withTheme`, and this can be extended even more. Let's talked about that in another section.
+
+
+
+#### 4. Extracting values from custom types
+
+When you started using *generics*, you start facing another big issue, how to get values from them? React. for example offers a set of helper to extract *Props* from an component with only the type. You might want to implement this in your own types. Let's create a simple interface:
+
+```typescript
+
+// types.ts
+interface User<Attributes extends {}> {
+  name: string,
+  last_name: string,
+  attributes: Attributes,
+}
+
+type UserAttributes<T> = T extends User<infer A> ? A : never;
+
+// utils.ts
+function getUserAttributes<U extends User<any>>(user: U): UserAttributes<U> {
+  return user.attributes;
+}
+```
+
+In line 4, we created an alias using the `type` syntax, lets explain what is doing:
+
+1. Created an alias named `UserAttributes`
+2. Add a generic value `<T>`, it will be required and could be any type.
+3. We checked if the generic `T` value extends `User`
+   1. We used special `<infer A>` syntax to *infer* the `Attribute` of the current type.
+4. If is true, we returned the *infered* type `A`.
+5. if is false, we returned `never`.
+
+In conclusion, with this small alias we can extract the attributes of any new `User` before hand. This is an small example, but you can imagine the potential we have in the big picture :tada:.
+
+#### 5. Use mapped types 
+
+#### 6. Recursive types (Advance)
+
+
+
+
 
 
 
