@@ -11,7 +11,7 @@ const HeaderWrapper: any = styled.header`
   text-align: left;
 `;
 
-const Content = styled.div<{ direction?: 'row' | 'column', justify?: JustifyContentProperty }>`
+const Content = styled.div<{ direction?: 'row' | 'column'; justify?: JustifyContentProperty }>`
   z-index: 999;
   max-width: 40rem;
   margin: 0 auto;

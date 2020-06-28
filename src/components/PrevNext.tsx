@@ -19,7 +19,7 @@ const Prev = styled.div`
   margin-right: 1rem;
   span {
     text-transform: uppercase;
-    font-size: 0.8rem;  
+    font-size: 0.8rem;
     color: ${props => props.theme.colors.grey.light};
   }
 `;

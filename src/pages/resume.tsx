@@ -1,11 +1,9 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Layout, Wrapper, Header, Content, SectionTitle } from '../components';
+import { Layout, Wrapper, Header, Content } from '../components';
 
 import config from '../../config/SiteConfig';
 import PageProps from '../models/PageProps';
-
-
 
 export default class ContactPage extends React.Component<PageProps> {
   public render() {
@@ -17,7 +15,7 @@ export default class ContactPage extends React.Component<PageProps> {
           <Content>
             <div className="Resume">
               {/*https://www.thebalancecareers.com/guidelines-for-what-to-include-in-a-resume-2061035*/}
-              <section className="Resume-identification" style={{textAlign: 'right'}}>
+              <section className="Resume-identification" style={{ textAlign: 'right' }}>
                 <p>
                   <b>Jesús Quintana</b>
                   <br />
@@ -52,8 +50,10 @@ export default class ContactPage extends React.Component<PageProps> {
                   <section>
                     <ul>
                       <li>
-                        Working on the Editor Team. This is the WYSWYG text editor used by Jira and Confluence. {' '} 
-                        <a href="https://bitbucket.org/atlassian/atlaskit-mk-2/src/master/" target="_bitbucket">Atlaskit Bitbucket</a>
+                        Working on the Editor Team. This is the WYSWYG text editor used by Jira and Confluence.{' '}
+                        <a href="https://bitbucket.org/atlassian/atlaskit-mk-2/src/master/" target="_bitbucket">
+                          Atlaskit Bitbucket
+                        </a>
                       </li>
                     </ul>
                   </section>
