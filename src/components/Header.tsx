@@ -4,20 +4,21 @@ import config from '../../config/SiteConfig';
 import { Link } from 'gatsby';
 import { Theme } from '../../config/Theme';
 import { Nav } from './Nav';
-import { JustifyContentProperty } from 'csstype';
+import { Property } from 'csstype';
 
 const HeaderWrapper: any = styled.header`
   padding: 2rem 1rem 0.5rem;
   text-align: left;
 `;
 
-const Content = styled.div<{ direction?: 'row' | 'column'; justify?: JustifyContentProperty }>`
+const Content = styled.div<{ direction?: 'row' | 'column', justify?: Property.JustifyContent }>`
   z-index: 999;
   max-width: 40rem;
   margin: 0 auto;
   display: flex;
   flex-direction: ${props => (props.direction ? props.direction : 'row')};
   justify-content: ${props => props.justify};
+
   a {
     &:hover {
       opacity: 0.85;
@@ -32,24 +33,24 @@ const HeaderTitle = styled.span`
 `;
 
 interface Props {
-  banner?: string;
+    banner?: string;
 }
 
 export class Header extends React.PureComponent<Props> {
-  public render() {
-    return (
-      <HeaderWrapper banner={this.props.banner || config.defaultBg}>
-        <Content justify="space-between">
-          <div>
-            <HeaderTitle>Jesús Quintana</HeaderTitle>
-            <br />
-            <Link to="/">{config.siteTitle}</Link>
-          </div>
-          <Nav />
-        </Content>
-        <br />
-        {this.props.children && <Content direction="column">{this.props.children}</Content>}
-      </HeaderWrapper>
-    );
-  }
+    public render() {
+        return (
+            <HeaderWrapper banner={this.props.banner || config.defaultBg} className="no-print">
+                <Content justify="space-between">
+                    <div>
+                        <HeaderTitle>Jesús Quintana</HeaderTitle>
+                        <br/>
+                        <Link to="/">{config.siteTitle}</Link>
+                    </div>
+                    <Nav/>
+                </Content>
+                <br/>
+                {this.props.children && <Content direction="column">{this.props.children}</Content>}
+            </HeaderWrapper>
+        );
+    }
 }

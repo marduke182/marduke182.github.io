@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${theme.colors.bg};
     background: ${theme.colors.primary};
   }
+
   body {
     background: ${theme.colors.bg};
     color: ${theme.colors.grey.default};
@@ -19,16 +20,18 @@ const GlobalStyle = createGlobalStyle`
       font-size: 14px;
     }
   }
+
   a {
     color: ${theme.colors.primary};
     text-decoration: none;
   }
+
   h1, h2, h3, h4 {
     color: ${theme.colors.grey.dark};
     font-family: ${theme.fontFamily.heading};
     font-weight: bold;
   }
-  
+
   blockquote {
     font-style: italic;
     position: relative;
@@ -42,61 +45,81 @@ const GlobalStyle = createGlobalStyle`
     width: 6px;
     margin-left: -1.6rem;
   }
+
   label {
     margin-bottom: .5rem;
     color: ${theme.colors.grey.dark};
   }
+
   input, textarea {
     border-radius: .5rem;
     border: none;
     background: rgba(0, 0, 0, 0.05);
     padding: .25rem 1rem;
+
     &:focus {
       outline: none;
     }
   }
+
   .textRight {
-    text-align:right;
+    text-align: right;
   }
+
   .gatsby-highlight {
     margin-bottom: 1rem;
+  }
+
+  .only-print, .only-print * {
+    display: none !important;
+  }
+  
+  @media print {
+    .no-print, .no-print * {
+      display: none !important;
+    }
+
+    .only-print, .only-print * {
+      display: initial !important;
+    }
   }
 `;
 
 const Footer = styled.footer`
   text-align: center;
   padding: 3rem 0;
+
   span {
     font-size: 0.75rem;
   }
 `;
 
 export class Layout extends React.PureComponent<{}> {
-  public render() {
-    const { children } = this.props;
+    public render() {
+        const {children} = this.props;
 
-    return (
-      <StaticQuery
-        query={graphql`
+        return (
+            <StaticQuery
+                query={graphql`
           query LayoutQuery {
             site {
               buildTime(formatString: "DD-MM-YYYY")
             }
           }
         `}
-        render={data => (
-          <ThemeProvider theme={theme}>
-            <React.Fragment>
-              <GlobalStyle />
-              {children}
-              <Footer>
-                &copy; {split(data.site.buildTime, '-')[2]} by Jesús Quintana. <br />
-                <span>Last build: {data.site.buildTime}</span>
-              </Footer>
-            </React.Fragment>
-          </ThemeProvider>
-        )}
-      />
-    );
-  }
+                render={data => (
+                    <ThemeProvider theme={theme}>
+                        <React.Fragment>
+                            <GlobalStyle/>
+                            {children}
+                            <Footer className="no-print">
+                                &copy; {split(data.site.buildTime, '-')[2]} by Jesús Quintana. <br/>
+                                <span>Last build: {data.site.buildTime}</span>
+                            </Footer>
+                        </React.Fragment>
+                    </ThemeProvider>
+                )}
+            />
+        );
+    }
 }
