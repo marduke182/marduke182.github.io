@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marduke182.github.io/sitemap-index.xml
