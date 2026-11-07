@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="942" viewBox="-20 -20 740 942" role="img" aria-labelledby="title desc">
+  <title id="title">Mapa del curso: Construye tu propio React</title>
+  <desc id="desc">Catorce lecciones aisladas en una columna a la izquierda alimentan ocho hitos que bajan en escalera hacia la derecha. Elementos y JSX, Árbol de fibers y Host del DOM llevan a First paint (solo montaje). Diff con keys lleva a Reconciliador (actualizar, eliminar). Lista de hooks y Cola de actualizaciones se fusionan en el Motor de estado (useState, sin árbol), que lleva a React con estado (setState, bailouts). Efectos y refs, Pila de contexto y Eventos del DOM llevan a React síncrono (fases de commit). Lanes y Scheduler se fusionan en el Bucle de prioridades (trabajo interrumpible), que lleva a Concurrent (time slicing). Thenables lleva a Suspense (use(promise)). Acciones asíncronas lleva a React 19 (acciones, Activity). Hook de DevTools lleva al final, mini-react con DevTools. Cada hito se apoya además en el que tiene encima.</desc>
+  <defs>
+    <marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#0d5c5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+  </defs>
+  <style>
+    text { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 15px; fill: #0a3d3e; }
+    .leaves rect, .lesson { fill: #fdf6e9; stroke: #0a3d3e; stroke-width: 1.5; }
+    .leaves text { text-anchor: middle; }
+    .merges rect, .merge { fill: #bfe6e0; stroke: #0d5c5e; stroke-width: 2; }
+    .milestones rect, .mile { fill: #0b6e6e; stroke: #0a3d3e; stroke-width: 2; }
+    .merges text, .milestones text { text-anchor: middle; }
+    .t { font-weight: 700; }
+    .s { font-size: 13px; }
+    .milestones text { fill: #fff; }
+    .milestones .final rect { stroke-width: 4; }
+    .lines path { fill: none; stroke: #0d5c5e; stroke-width: 1.5; }
+    .lines .arrow { marker-end: url(#head); }
+  </style>
+  <rect x="-20" y="-20" width="740" height="942" fill="#fdf6e9" />
+  <g class="lines">
+    <path d="M152 19H168M152 61H168M152 103H168M168 19V103" />
+    <path d="M168 61H304" class="arrow" />
+    <path d="M152 179H336" class="arrow" />
+    <path d="M406 86V152" class="arrow" />
+    <path d="M152 255H168M152 297H168M168 255V297" />
+    <path d="M168 276H192" class="arrow" />
+    <path d="M340 276H368" class="arrow" />
+    <path d="M438 204V249" class="arrow" />
+    <path d="M152 365H168M152 407H168M152 449H168M168 365V449" />
+    <path d="M168 407H400" class="arrow" />
+    <path d="M470 301V380" class="arrow" />
+    <path d="M152 517H168M152 559H168M168 517V559" />
+    <path d="M168 538H192" class="arrow" />
+    <path d="M340 538H432" class="arrow" />
+    <path d="M502 432V511" class="arrow" />
+    <path d="M152 635H464" class="arrow" />
+    <path d="M534 563V608" class="arrow" />
+    <path d="M152 719H496" class="arrow" />
+    <path d="M566 660V692" class="arrow" />
+    <path d="M152 803H528" class="arrow" />
+    <path d="M598 744V776" class="arrow" />
+  </g>
+  <g class="leaves">
+    <rect x="2" y="2" width="150" height="34" rx="8" />
+    <text x="77" y="24">Elementos y JSX</text>
+    <rect x="2" y="44" width="150" height="34" rx="8" />
+    <text x="77" y="66">Árbol de fibers</text>
+    <rect x="2" y="86" width="150" height="34" rx="8" />
+    <text x="77" y="108">Host del DOM</text>
+    <rect x="2" y="162" width="150" height="34" rx="8" />
+    <text x="77" y="184">Diff con keys</text>
+    <rect x="2" y="238" width="150" height="34" rx="8" />
+    <text x="77" y="260">Lista de hooks</text>
+    <rect x="2" y="280" width="150" height="34" rx="8" />
+    <text x="77" y="302" style="font-size: 13px">Cola de actualizaciones</text>
+    <rect x="2" y="348" width="150" height="34" rx="8" />
+    <text x="77" y="370">Efectos y refs</text>
+    <rect x="2" y="390" width="150" height="34" rx="8" />
+    <text x="77" y="412">Pila de contexto</text>
+    <rect x="2" y="432" width="150" height="34" rx="8" />
+    <text x="77" y="454">Eventos del DOM</text>
+    <rect x="2" y="500" width="150" height="34" rx="8" />
+    <text x="77" y="522">Lanes</text>
+    <rect x="2" y="542" width="150" height="34" rx="8" />
+    <text x="77" y="564">Scheduler</text>
+    <rect x="2" y="618" width="150" height="34" rx="8" />
+    <text x="77" y="640">Thenables</text>
+    <rect x="2" y="702" width="150" height="34" rx="8" />
+    <text x="77" y="724">Acciones asíncronas</text>
+    <rect x="2" y="786" width="150" height="34" rx="8" />
+    <text x="77" y="808">Hook de DevTools</text>
+  </g>
+  <g class="merges">
+    <g>
+      <rect x="194" y="251" width="146" height="50" rx="10" />
+      <text x="267" y="272" class="t">Motor de estado</text>
+      <text x="267" y="290" class="s">useState, sin árbol</text>
+    </g>
+    <g>
+      <rect x="194" y="513" width="146" height="50" rx="10" />
+      <text x="267" y="534" class="t" style="font-size: 13px">Bucle de prioridades</text>
+      <text x="267" y="552" class="s">trabajo interrumpible</text>
+    </g>
+  </g>
+  <g class="milestones">
+    <g>
+      <rect x="306" y="36" width="160" height="50" rx="10" />
+      <text x="386" y="57" class="t">First paint</text>
+      <text x="386" y="75" class="s">solo montaje</text>
+    </g>
+    <g>
+      <rect x="338" y="154" width="160" height="50" rx="10" />
+      <text x="418" y="175" class="t">Reconciliador</text>
+      <text x="418" y="193" class="s">actualizar, eliminar</text>
+    </g>
+    <g>
+      <rect x="370" y="251" width="160" height="50" rx="10" />
+      <text x="450" y="272" class="t">React con estado</text>
+      <text x="450" y="290" class="s">setState, bailouts</text>
+    </g>
+    <g>
+      <rect x="402" y="382" width="160" height="50" rx="10" />
+      <text x="482" y="403" class="t">React síncrono</text>
+      <text x="482" y="421" class="s">fases de commit</text>
+    </g>
+    <g>
+      <rect x="434" y="513" width="160" height="50" rx="10" />
+      <text x="514" y="534" class="t">Concurrent</text>
+      <text x="514" y="552" class="s">time slicing</text>
+    </g>
+    <g>
+      <rect x="466" y="610" width="160" height="50" rx="10" />
+      <text x="546" y="631" class="t">Suspense</text>
+      <text x="546" y="649" class="s">use(promise)</text>
+    </g>
+    <g>
+      <rect x="498" y="694" width="160" height="50" rx="10" />
+      <text x="578" y="715" class="t">React 19</text>
+      <text x="578" y="733" class="s">acciones, Activity</text>
+    </g>
+    <g class="final">
+      <rect x="530" y="778" width="160" height="50" rx="10" />
+      <text x="610" y="799" class="t">mini-react</text>
+      <text x="610" y="817" class="s">con DevTools</text>
+    </g>
+  </g>
+  <g class="legend">
+    <rect x="2" y="872" width="22" height="22" rx="5" class="lesson" />
+    <text x="34" y="888">Lección aislada</text>
+    <rect x="172" y="872" width="22" height="22" rx="5" class="merge" />
+    <text x="204" y="888">Fusión aislada</text>
+    <rect x="342" y="872" width="22" height="22" rx="5" class="mile" />
+    <text x="374" y="888">Hito: un React que funciona</text>
+  </g>
+</svg>
